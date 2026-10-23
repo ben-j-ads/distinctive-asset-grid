@@ -121,6 +121,14 @@
     .note { background: var(--paper); border-left: 4px solid var(--ink); padding: 6px 10px; margin: 6px 0; font-size: 0.9rem; color: var(--ink-muted); }
     .note b { color: var(--ink); }
 
+
+    /* polish: aligned inputs, chart label halo, next-step link */
+    .inputs, .adv { align-items: end; }
+    #chart .cap { paint-order: stroke; stroke: var(--paper-raised); stroke-width: 4px; stroke-linejoin: round; }
+    .next-step { border: 1px solid var(--rule); border-left: 4px solid var(--ink); background: var(--paper-raised); padding: 14px 16px; margin: 24px 0 0; }
+    .next-step .k { color: var(--ink-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+    .next-step a { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; text-transform: lowercase; }
+    .next-step p { margin: 4px 0 0; color: var(--ink-muted); font-size: 0.92rem; }
   </style>
 </head>
 <body>
@@ -133,16 +141,16 @@
 
     <section class="panel">
       <label class="field">Your test results, one row per asset. Columns: asset, respondents, brand, then one column per rival
-        <textarea id="data" rows="9" spellcheck="false" style="font-family: ui-monospace, Menlo, monospace; font-size: .9rem"></textarea></label>
+        <textarea autocomplete="off" id="data" rows="9" spellcheck="false" style="font-family: ui-monospace, Menlo, monospace; font-size: .9rem"></textarea></label>
       <div class="actions"><button id="sample" type="button">Load the made-up sample</button><span class="hint" style="margin-left:4px">The sample is invented. Do not read anything into it.</span></div>
       <p class="hint"><b>respondents</b> is how many category buyers saw the asset with the brand removed. <b>brand</b> is how many named your brand. Each rival column is how many named that rival. Add a <b>prompted</b> column (yes or no) if you showed people a list of brands. Run the test with Cover the Logo.</p>
       <details class="learn" style="margin-top:12px">
         <summary>Settings</summary>
         <div class="body">
           <div class="inputs tight">
-            <label class="field">Fame line <span class="suffix">%</span><input type="number" id="fc" min="1" max="99" step="1" inputmode="numeric"></label>
-            <label class="field">Uniqueness line <span class="suffix">%</span><input type="number" id="uc" min="1" max="99" step="1" inputmode="numeric"></label>
-            <label class="field">Fame weight in the score <span class="suffix">%</span><input type="number" id="w" min="1" max="99" step="1" inputmode="numeric"></label>
+            <label class="field">Fame line <span class="suffix">%</span><input autocomplete="off" type="number" id="fc" min="1" max="99" step="1" inputmode="numeric"></label>
+            <label class="field">Uniqueness line <span class="suffix">%</span><input autocomplete="off" type="number" id="uc" min="1" max="99" step="1" inputmode="numeric"></label>
+            <label class="field">Fame weight in the score <span class="suffix">%</span><input autocomplete="off" type="number" id="w" min="1" max="99" step="1" inputmode="numeric"></label>
           </div>
           <p class="hint">These are defaults of convention, not published standards. With a 50% fame line, "famous but shared" cannot exist, which is why the default is 30%.</p>
         </div>
@@ -182,7 +190,7 @@
 
     <section class="panel">
       <h2>How many people do you need to ask?</h2>
-      <div class="inputs tight"><label class="field">Margin of error on fame, plus or minus <span class="suffix">points</span><input type="number" id="mg" min="1" max="20" step="1" inputmode="numeric"></label></div>
+      <div class="inputs tight"><label class="field">Margin of error on fame, plus or minus <span class="suffix">points</span><input autocomplete="off" type="number" id="mg" min="1" max="20" step="1" inputmode="numeric"></label></div>
       <p class="plain" id="plan" style="margin-top:12px"></p>
     </section>
 
@@ -220,6 +228,7 @@ Score       = 100 x Fame^w x Uniqueness^(1 - w)      (w = 0.5 by default)</div>
       <p><b>The score is a ranking aid.</b> It has not been tested against sales.</p>
     </section>
 
+    <section class="next-step"><div class="k">next</div><a href="https://cep-scorer.benjads.com/">cep scorer</a><p>Assets are one part of mental availability. See which buying situations bring your brand to mind.</p></section>
     <footer class="site-foot">
       <picture><source media="(prefers-color-scheme: dark)" srcset="logo/benjads-footnote-paper-transparent.svg"><img src="logo/benjads-footnote-olive-transparent.svg" alt="ben.j.ads"></picture>
       <p><span class="tag">1</span>Distinctive asset grid method: Romaniuk, Building Distinctive Brand Assets (2018). Same scoring as assetscan. Marketing science, given away free, for people who spend money.</p>
