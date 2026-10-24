@@ -111,6 +111,13 @@
     .barrow .fill.lime { background: var(--lime); border-right: 2px solid var(--ink); }
     .barrow .val { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
     .tbl-wrap { overflow-x: auto; }
+    /* Mobile table pass: stop the cell crush on phones, pin the row label,
+       and let wide tables scroll inside their panel on purpose. */
+    @media (max-width: 760px) {
+      .tbl-wrap th, .tbl-wrap td { min-width: 74px; padding: 6px 8px; }
+      .tbl-wrap th:first-child, .tbl-wrap td:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper-raised); }
+      .tbl-wrap tr.you td:first-child { background: var(--lime); }
+    }
     @media (max-width: 520px) { .barrow { grid-template-columns: 90px 1fr 56px; } }
 
     .g-cut { stroke: var(--ink-muted); stroke-width: 1.5; stroke-dasharray: 5 5; }
